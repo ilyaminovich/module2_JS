@@ -39,7 +39,7 @@ function listNote() {
 
 function readNote(title) {
     const arrayJson = getNotes(),
-    note = notes.find(element => element.title === title)
+    note = arrayJson.find(element => element.title === title)
     if (note) {
         console.log(chalk.blue.inverse("title:") + " " + note.title) 
         console.log(chalk.yellow.inverse("body:") + " " + note.body)
@@ -49,14 +49,14 @@ function readNote(title) {
 }
 
 function removeNote(title) {
-    const notes = JSON.parse(fs.readFileSync(notePath, "utf8")),
-    titleFinder = notes.find(item => item.title === title),
-        indexOfTitle = notes.indexOf(titleFinder);
+    const arrayJson = getNotes(),
+    titleFinder = arrayJson.find(item => item.title === title),
+        indexOfTitle = arrayJson.indexOf(titleFinder);
     if (titleFinder) {
-        notes.splice(indexOfTitle, 1);
+        arrayJson.splice(indexOfTitle, 1);
         console.log(titleFinder)
         console.log(chalk.red.inverse("DELETED"))
-        fs.writeFileSync("notes.json", JSON.stringify(notes, null, " "));
+        fs.writeFileSync("notes.json", JSON.stringify(arrayJson, null, " "));
     } else {
         console.log("nothing to delete");
     }

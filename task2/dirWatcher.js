@@ -3,7 +3,7 @@ watch() {
 const chokidar = require("chokidar"),
   fs = require("fs"),
   path = require("path"),
-  pathToWrite = path.join(__dirname, "filewithdata.json"),
+  pathToWrite = path.join(__dirname, "fileWithData.json"),
   pathToFile = path.join(__dirname, "data"),
   watcher = chokidar.watch(pathToFile, {
   persistent: true
