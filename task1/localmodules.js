@@ -70,7 +70,9 @@ function removeNote(title) {
 
 
 function sort(text, order){//rename
+
     const arrayJson = getNotes();
+    
 
     if(text === "title" && order === "ascending") {
         arrayJson.sort((a,b) => a.title.length - b.title.length);

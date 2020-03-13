@@ -32,7 +32,6 @@ function pleaseWork(){
     });
 }
 
-
 function getNotes(){
     try{
         return JSON.parse(fs.readFileSync('./rickAndMorty.json', "utf8"));
@@ -42,22 +41,39 @@ function getNotes(){
     }
 };
 
-function readRickAndMorty(...args){
-    const arrayJson = getNotes();
-    for(let i = 0; i < args.length; i++){
-    const note = arrayJson.filter(element => element.args[i] === args[i])
-
-
-
-
-    // if (note) {
-    //     console.log(chalk.blue.inverse("name") + " " + note.name);
-    // } else(
-    //     console.log('there is no such id')
-    // )
+function reader(...args) {
+    const arrayJson = getNotes(),
+    note = arrayJson.find(element => element.title === title)
+    if (note) {
+        console.log(chalk.blue.inverse("title:") + " " + note.title) 
+        console.log(chalk.yellow.inverse("body:") + " " + note.body)
+    } else(
+        console.log('there is no such title')
+    )
 }
-console.log(note);
-}
+
+
+
+
+
+
+
+// function readRickAndMorty(...args){
+//     const arrayJson = getNotes();
+//     for(let i = 0; i < args.length; i++){
+//     const note = arrayJson.filter(element => element.args[i] === args[i])
+
+
+
+
+//     // if (note) {
+//     //     console.log(chalk.blue.inverse("name") + " " + note.name);
+//     // } else(
+//     //     console.log('there is no such id')
+//     // )
+// }
+// console.log(note);
+// }
 
 // module.exports ={
 //     readRickAndMorty
